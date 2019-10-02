@@ -1,0 +1,30 @@
+檔案狀態
+01.	未追蹤
+
+Unmodified 未修改
+Modified 已變動
+staged 暫存
+
+git clone 別人的gitHub網址
+
+插件
+	Live Server 模擬伺服器
+	Live Sass Compiler
+	gitLens 觀看git紀錄
+
+Azure 可以用來建立Web應用程式
+	01.	左半邊建立資源
+	02.	選擇Web應用程式
+	03.	資源群組 可以隨意設定一個名稱 用於大分類
+	04.	執行個體名稱 設定為網站名稱
+	05.	執行階段堆疊 就是伺服器
+	06.	地區選擇 East Asia
+
+將gitHub 部屬到 Azure
+	01.	資源群組 選擇群組 和剛建立的名稱
+	02.	部署中心 選擇GitHub 並做連接
+	03.	App Service組建服務
+
+取得網址
+	01. 選擇概觀 裡面有url 是github起點
+	

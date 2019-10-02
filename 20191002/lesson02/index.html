@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>OOXX小遊戲</title>
+    <style type="text/css">
+        table{
+            width: 600px;
+            height: 600px;
+            text-align: center;
+            font-size: 100px;
+        }
+        td{
+            width:200px;
+        }
+    </style>
+</head>
+<body>
+    <table border="1">
+        <!--傳入參數 有兩種方式-->
+        <tr>
+            <td id="c1" onclick="SetPoint(document.getElementById('c1'))">-</td>
+            <td id="c2" onclick="SetPoint(this)">-</td>
+            <td id="c3" onclick="SetPoint(this)">-</td>
+        </tr>
+        <tr>
+            <td id="c4" onclick="SetPoint(this)">-</td>
+            <td id="c5" onclick="SetPoint(this)">-</td>
+            <td id="c6" onclick="SetPoint(this)">-</td>
+        </tr>
+        <tr>
+            <td id="c7" onclick="SetPoint(this)">-</td>
+            <td id="c8" onclick="SetPoint(this)">-</td>
+            <td id="c9" onclick="SetPoint(this)">-</td>
+        </tr>
+    </table>
+    <script>
+        var i=1;
+        function SetPoint(obj) {
+            if(i%2==1){
+                obj.innerText='X';
+            }else{
+                obj.innerText='O';
+            }
+            i++;
+        }
+    </script>
+</body>
+</html>

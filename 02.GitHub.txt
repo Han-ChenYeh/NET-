@@ -1,0 +1,13 @@
+建立使用者名稱
+    git config user.name "hcy"
+
+建立電子信箱
+    git config --global user.email "a0910308890@gmail.com"
+
+在專案目錄 啟用git
+    git init
+
+查看目前檔案狀態
+    git status
+
+將檔案建立追蹤
