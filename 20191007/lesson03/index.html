@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style_pc.css">
+    <style>
+        .br0{
+            border-radius: 0;
+        }
+        .br15{
+            border-radius: 15px;
+        }
+        .br30{
+            border-radius: 30px;
+        }
+        .br45{
+            border-radius: 45px;
+        }
+        /*等比例放大*/
+        .bigger{
+            transform:scale(1.3);
+            transition-duration: 1s;
+        }
+        .small{
+            transform:scale(1);
+            transition-duration: 1s;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <input id="CheckAll" type="checkbox" />勾選全部
+                    <div id="CheckBoxGroup">
+                        <input type="checkbox" />項目1
+                        <input type="checkbox" />項目2
+                        <input type="checkbox" />項目3
+                        <input type="checkbox" />項目4
+                        <input type="checkbox" />項目5
+                        <input type="checkbox" />項目6
+                        <input type="checkbox" />項目7
+                        <input type="checkbox" />項目8
+                    </div>
+                </div>
+            </div>
+            <div id="ImgGroup2" class="row" style="margin:10px; padding-top:100px">
+                <div class="col-12">
+                    <select id="sel01">
+                        <option value="br0">0px</option>
+                        <option value="br15">15px</option>
+                        <option value="br30">30px</option>
+                        <option value="br45">50px</option>
+                    </select>
+                </div>
+        
+                <div class="col-4">
+                    <img src="images/1.jpg" style="width:100%" class="img-responsive" />
+                </div>
+                <div class="col-4">
+                    <img src="images/2.jpg" style="width:100%" class="img-responsive" />
+                </div>
+                <div class="col-4">
+                    <img src="images/3.jpg" style="width:100%" class="img-responsive" />
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <div class="row myBigger" style="margin:10px">
+                <div class="col-4">
+                    <img src="Images/1.jpg" style="width:100%" class="img-responsive" />
+                </div>
+                <div class="col-4">
+                    <img src="Images/2.jpg" style="width:100%" class="img-responsive" />
+                </div>
+                <div class="col-4">
+                    <img src="Images/3.jpg" style="width:100%" class="img-responsive" />
+                </div>
+            </div>
+            <div class="row myBigger" style="margin:10px">
+                <div class="col-4">
+                    <img src="Images/4.jpg" style="width:100%" class="img-responsive" />
+                </div>
+                <div class="col-4">
+                    <img src="Images/5.jpg" style="width:100%" class="img-responsive" />
+                </div>
+                <div class="col-4">
+                    <img src="Images/6.jpg" style="width:100%" class="img-responsive" />
+                </div>
+            </div>
+        </div>
+    </header>
+<script>
+    //建立check方法 當點選全部時
+    $('#CheckAll').change(getCheck);
+
+    function getCheck(){
+        var result = $(this).prop("checked");
+        $("#CheckBoxGroup input").prop("checked",result);
+    };
+    
+    $("#sel01").change(changeRadio);
+
+    function changeRadio(){
+        var result = $(this).val();
+        $("#ImgGroup2 img").removeClass();
+        $("#ImgGroup2 img").addClass(result);
+    };
+
+    //對css變動的方式 方法1
+    /*
+    $(".myBigger img").hover(movein,moveout);//移入,移出
+    function movein(){
+        $(this).css("cursor","pointer");
+        $(this).removeClass();
+        $(this).addClass("bigger");//加入放大的css
+    }
+    function moveout(){
+        $(this).removeClass();
+        $(this).addClass("small");//加入還原的css
+    }
+    */
+    //對css變動的方式 方法2
+    $(".myBigger img").hover(movein,moveout);//移入,移出
+    function movein(){
+        $(this).css("cursor","pointer");
+        $(this).css("transform","scale(1.3)");
+        $(this).css("transition-duration","1s");
+    }
+    function moveout(){
+        $(this).css("transform","scale(1)");
+        $(this).css("transition-duration","1s");
+    }
+</script>
+</body>
+</html>

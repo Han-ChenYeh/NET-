@@ -1,6 +1,10 @@
-建立使用者名稱
-    git config user.name "hcy"
 
+建立這台電腦的使用者名稱
+    git config --global user.name "hcy"
+
+查詢這台電腦的使用者名稱
+    git config user.name
+    
 建立電子信箱
     git config --global user.email "a0910308890@gmail.com"
 
@@ -16,5 +20,8 @@
 儲存log
     git commit -m "v20191007#1"
 
-上傳log
+推送log
     git push -u origin master
+
+將線上最新的版本更新下來
+    git pull --rebase
