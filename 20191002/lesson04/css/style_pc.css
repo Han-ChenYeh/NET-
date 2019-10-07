@@ -1,0 +1,49 @@
+.titleBar{
+    height: 5em;
+    background-color: orangered;
+    text-align: center;
+    padding-top:1.5em;
+    font-size: 32px;
+    color:white;
+}
+.titleBar #search{
+    height: 2em;
+}
+
+.slider{
+    margin: auto;
+    width: 80%;
+    height:100%;
+    overflow:hidden;
+}
+.slider1{
+    height: 17em;
+    width: 50%;
+    background-color: blanchedalmond;
+    float: left;
+}
+.slider2{
+    margin-bottom: 1em;
+    height: 8em;
+    width: 49%;
+    background-color: brown;
+    float: right;
+}
+.slider3{
+
+    height: 8em;
+    width: 49%;
+    background-color: cornflowerblue;
+    float: right;
+}
+.myMenu{
+    margin: 1em 0;
+    display: flex;
+    background-color: bisque;
+}
+
+.myMenu div{
+    text-align: center;
+    margin: 0.5em;
+    flex-grow:1;
+}

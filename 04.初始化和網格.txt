@@ -1,0 +1,27 @@
+初始化 讓所有瀏覽器樣式基本相同
+    https://necolas.github.io/normalize.css/
+
+flexbox 可以用於網格排序
+    https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+父容器
+    .container{
+
+        display:flex;//對區塊啟用網格功能
+
+        //排列方式 row 左到右 row-reverse 右到左 column 上到下 column-reverse 下到上
+        flex-direction: row | row-reverse | column | column-reverse;
+
+        //柔性包裝 nowrap 所有彈性項目都在一行上 wrap 一排浮動上到下 wrap-reverse 一排浮動下到上
+
+        flex-wrap: nowrap | wrap | wrap-reverse;
+    }
+
+
+子容器  //預設順序是左到右 order可以更改排序 數字越小的區塊 在越前面 例:這裡item2會排在前面
+    .item1 {
+        order: 2;
+    }
+    .item2 {
+        order: 1;
+    }

@@ -1,0 +1,60 @@
+@import "_normalize";
+
+.titleBar{
+    text-align: center;
+    background-color: orangered;
+    font-size: 20px;
+    input{
+        margin: 5em 0;
+    }
+    h1{
+        display: inline;
+        color: white;
+    }
+}
+%box{
+    display:flex;//啟用flex
+    width:80%;
+    margin: auto;
+    margin-top:2em;
+    div{
+        flex-grow: 1;//每個區塊都是一比一
+    }
+}
+.ad{
+    @extend %box;
+
+    .adItem{
+        height: 5em;
+        background-color: darkgoldenrod;
+    }
+    .adItem:first-child{//第一個adItem
+        margin-bottom: 0.5em;
+    }
+    .adInner{
+        background-color: crimson;
+        margin-right: 0.5em;
+    }
+}
+.menu{
+    @extend %box;
+    text-align: center;
+    img{
+        border-radius: 4em;
+    }
+}
+.product{
+    @extend %box;
+    text-align: center;
+    .myBar{
+        width:80%;
+        margin: auto;
+    }
+}
+.myTypeTitle{
+    @extend %box;
+}
+.myType{
+    @extend %box;
+    text-align: center;
+}

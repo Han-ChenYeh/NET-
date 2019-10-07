@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //建立一個專門取得網頁元件的方法
+        function getElement(id){
+            return document.getElementById(id);
+        }
+
+        function checkMyForm(){
+            var check=getElement("isCheck").isCheck;
+            if(check){
+                return true;
+                
+            }else{
+                alert("必須勾選同意");
+                return false;
+                
+            }
+        }
+        //元件.方法=執行內容 
+        //然後執行內容 又寫了元件.方法=執行內容
+        //最後執行內容 回傳結果
+        window.onload = function(){
+            getElement("form1").onsubmit=function(){
+                return checkMyForm();
+            }
+        }
+    </script>
+</head>
+<body>
+    <form id="form1" action="http://isbaas.azurewebsites.net/WebForms/Form2Mail.aspx?mailto=a0910308890@gmail.com.tw&redirect=http://www.google.com" method="post">
+	<fieldset>
+	<legend>個人資料--必填</legend>
+        <label for="user">姓名:</label>
+        <input type="text" id="user" name="user">
+        <br>
+        <label for="pw">密碼:</label>
+        <input type="text" id="pw" name="pw">
+        <br>
+        <label for="sex"">性別:</label>
+        <input type="radio" id="sex" name="sex" checked>男生
+        <input type="radio" id="sex" name="sex">女生
+    </fieldset>
+    <fieldset>
+        <legend>個人資料--興趣</legend>
+        <label for="intrset"">興趣:</label>
+        <input type="checkbox" name="intrset" value="音樂" >音樂
+        <input type="checkbox" name="intrset" value="運動"" >運動
+        <input type="checkbox" name="intrset" value="閱讀" >閱讀
+        <input type="checkbox" name="intrset" value="電影" >電影
+        <br>
+        <label for="comments">專長:</label>
+        <textarea name="comments" cols="40" rows="6">
+
+        </textarea>
+    </fieldset>
+    <fieldset>
+        <legend>個人資料--地址</legend>
+        <label for="addNum"">郵遞區號:</label>
+        <input type="text" name="addNum">
+        <br>
+        <label for="addCity"">縣市:</label>
+        <select name="addCity">
+			<option value="台北" selected="selected">台北</option>
+			<option value="桃園">桃園</option>
+			<option value="新竹">新竹</option>
+        </select>
+        <br>
+        <label for="addOther">其他地址:</label>
+        <input type="text" name="addOther">
+    </fieldset>
+    <input type="checkbox" id="isCheck">是否同意我們使用個人資料
+    <button type="submit">送出</button>
+    <button type="reset"">清除</button>
+    </form>
+
+    
+</body>
+</html>

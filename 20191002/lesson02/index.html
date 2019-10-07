@@ -5,21 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>OOXX小遊戲</title>
-    <style type="text/css">
-        table{
-            width: 600px;
-            height: 600px;
-            text-align: center;
-            font-size: 100px;
-        }
-        td{
-            width:200px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/table_pc.css">
 </head>
 <body>
     <table border="1">
-        <!--傳入參數 有兩種方式-->
+        <!--傳入參數 有兩種方式
+            getElementById      透過ID取得物件
+            this                表示自己物件 
+            然後把物件傳給方法
+        -->
         <tr>
             <td id="c1" onclick="SetPoint(document.getElementById('c1'))">-</td>
             <td id="c2" onclick="SetPoint(this)">-</td>
@@ -39,6 +33,9 @@
     <script>
         var i=1;
         function SetPoint(obj) {
+            if (obj.innerText!="-"){//不符合就離開
+                return;
+            }
             if(i%2==1){
                 obj.innerText='X';
             }else{

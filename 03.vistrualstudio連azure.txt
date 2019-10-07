@@ -1,0 +1,5 @@
+vistrual studio 對應 azure
+
+01. 取得發行設定檔
+
+02.	專案中 可以點選英文的publih 載入 設定檔

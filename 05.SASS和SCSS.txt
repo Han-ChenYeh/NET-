@@ -1,0 +1,63 @@
+開始使用sass
+    01. 安裝套件 Live Sass Compiler
+    02. 新增額外的功能 點選啟用下方的watch sass 可以監測所有的scss 語法問題和 自動轉化css
+    03. 網頁 link的時候 要選css
+
+結構式語法
+    div{
+        p{
+            color:white;
+            font-size:24px;
+        }
+        background-color: black;
+        height:100px;
+    }
+
+建立變數 和使用變數
+    第一種
+        $mainColor : #ff9203;
+        .main{
+            background-color:$mainColor;
+        }
+    第二種
+        %btn{
+            color:red;
+            margin:10px;
+            height:30px;
+            width:20px;
+        }
+        .btn-A{
+            @extend %btn;
+            padding:5px;
+        }
+
+建立方法 並套用
+    @mixin Square($width,$height,$color){
+        width:$width;
+        height:$height;
+        color:$color;
+        border:1px solid black;
+    }
+    .box{
+        @include Square(40px,50px,blue);
+    }
+
+建立lib檔案 和 載入lib檔案
+    檔案開頭加上底線的scss檔 就是lib 不會被編譯 可以用於 加入其他的scss檔案
+    @import "_normalize"
+
+階層套用 用&符號表示父層selector
+    li{
+        display:flex;
+        flex-basis;auot;
+        margin-bottom:10px;
+        
+        &:last-child{   //最後一個li
+            margin-gottom:0px;
+        }
+
+        & > a{          //li裡面第一層a
+            flex:0 0 50px;
+            margin-right:10px;
+        }
+    }

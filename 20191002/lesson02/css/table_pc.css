@@ -1,0 +1,10 @@
+table{
+    width: 600px;
+    height: 600px;
+    text-align: center;
+    font-size: 100px;
+}
+td{
+    width:200px;
+    cursor:pointer;
+}

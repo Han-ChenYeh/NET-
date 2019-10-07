@@ -1,0 +1,8 @@
+Beautify
+    協助排序的套件 對檔案右鍵 可以選擇格式化文件
+
+Settings sync
+    為你的vscode 建立套件設定 可以用於多台電腦 但要查詢如何使用
+
+Live Sass Compiler
+    用於Sass套件
