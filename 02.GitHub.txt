@@ -11,3 +11,10 @@
     git status
 
 將檔案建立追蹤
+    git add .
+
+儲存log
+    git commit -m "v20191007#1"
+
+上傳log
+    git push -u origin master

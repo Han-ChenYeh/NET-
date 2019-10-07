@@ -1,0 +1,23 @@
+jquery會在物件上面再包一層 所以不能和javaScript混用
+
+$('選擇器');
+    以陣列回傳找到的元素集合
+
+$(dlement|document|widow);
+    回傳包覆該element的jquery物件 
+
+$('HTML字串');
+    回傳包覆該html元素的jquery物件
+
+$(function(){});
+    在html文件載入後 執行function(){}的內容
+
+$('#textWeight').val();
+    取得或設定物件內的value值
+
+範例
+$('h1').css('color','green').mouseover(function(){
+    $(this).css('color','red');
+}).mouseout(function(){
+    $(this).css('color','green');
+});

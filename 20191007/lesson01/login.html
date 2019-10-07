@@ -120,11 +120,20 @@
             }else{
                 $("#Login").modal(); 
             }
-            
         }
         function showDialog2(){
             $("#design").modal();
         }
+        $(document).ready(function(){
+            $('h3').css('color','green').mouseover(function(){
+                $(this).css('color','red');
+            }).mouseout(function(){
+                $(this).css('color','green');
+            });
+        });
+        //縮寫法 jqdocready 可以直接生成$(document).ready
+        //縮寫法 jqclick 可以直接生成$(selector).click
+
     </script>
 </body>
 </html>
