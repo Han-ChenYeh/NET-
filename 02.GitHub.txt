@@ -25,3 +25,6 @@
 
 將線上最新的版本更新下來
     git pull --rebase
+
+下載線上的版本下來
+    git clone https://github.com/Han-ChenYeh/NET-.git
