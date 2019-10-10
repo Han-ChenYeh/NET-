@@ -1,8 +1,30 @@
 Beautify
     協助排序的套件 對檔案右鍵 可以選擇格式化文件
 
+Bootstrap 4
+    bootstrap指令
+
+Chinese Language
+    中文化
+
+GitLens
+    git輔助功能
+
 Settings sync
     為你的vscode 建立套件設定 可以用於多台電腦 但要查詢如何使用
+    
+intelliSense for css
+    css功能
+
+jquery code
+    jquery功能
+
 
 Live Sass Compiler
     用於Sass套件
+
+live server
+    網頁即時顯示功能
+
+Open in Browser
+    打開網頁瀏覽器
