@@ -1,0 +1,14 @@
+$.ajax({
+    type: "post", //http verb
+    headers: {
+        //http header
+        "header": "value",
+        "header": "value"
+    },
+    url: "https://domain/route",
+    data: JSON.stringify({...}), //要傳遞的資料
+    dataType: "json",
+    success: function (response) {
+        //呼叫遠端服務後的回傳結果
+    }
+});

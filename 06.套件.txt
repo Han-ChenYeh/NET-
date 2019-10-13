@@ -1,11 +1,15 @@
 Beautify
     協助排序的套件 對檔案右鍵 可以選擇格式化文件
 
-Bootstrap 4
+Bootstrap 4, Font awesome 4, Font Awesome 5 Free & Pro snippets for Visual studio code
+Bootstrap v4 Snippets for VS Code
     bootstrap指令
 
 Chinese Language
     中文化
+
+Code Spell Checker
+    英文單字檢查
 
 GitLens
     git輔助功能
@@ -13,12 +17,11 @@ GitLens
 Settings sync
     為你的vscode 建立套件設定 可以用於多台電腦 但要查詢如何使用
     
-intelliSense for css
+IntelliSense for CSS class names in HTML
     css功能
 
-jquery code
+jQuery Code Snippets
     jquery功能
-
 
 Live Sass Compiler
     用於Sass套件
