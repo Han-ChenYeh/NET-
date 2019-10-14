@@ -32,6 +32,7 @@
             <div class="col-lg-2">
                 <button id="goT" class="btn btn-primary" type="button" >--＞</button>
                 <button id="goB" class="btn btn-primary" type="button" >＜--</button>
+                <button id="myDelete" class="btn btn-primary" type="button" >刪除</button>
             </div>
             <div class="col-lg-5">
                 <form action="" id="form2">
@@ -50,11 +51,34 @@
         $(document).ready(function () {
             $("#goT").click(goright);
             $("#goB").click(goleft);
+            $("#myDelete").click(deleteStorage);
+
+            if(localStorage.getItem('data1')!=null){
+                //localStorage.key(1)               第一個key值
+                //localStorage.getItem('data1')     取得value值
+                //localStorage.data1                取得value值
+                $("#startText").val(localStorage.data1);
+
+                $("#endText").val(localStorage.data2);
+            }
+            
         });
-        
+
+        //刪除資料庫的資料
+        function deleteStorage(){
+            localStorage.removeItem("data1");
+            localStorage.removeItem("data2");
+            //localStorage.clear();
+        }
+        //存進儲存庫的資料
+        function saveStorage(){
+            localStorage.setItem("data1",$("#startText").val());
+            localStorage.setItem("data2",$("#endText").val());
+        }
+
         function goright(){
             source = JSON.stringify($("#form1").serializeObject());//{"Text":"翻譯測試"}
-            target="#endText";
+            target="#endText";          
             goTrans();
         }
         function goleft(){
@@ -101,6 +125,7 @@
                         result+=data[j].text+"\t";//取得物件中的text內容
                     }
                     $(target).val(result);
+                    saveStorage();//儲存進javaScript的儲存庫
                 }
             });
         }

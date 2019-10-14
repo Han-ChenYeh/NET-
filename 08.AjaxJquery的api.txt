@@ -12,3 +12,10 @@ $.ajax({
         //呼叫遠端服務後的回傳結果
     }
 });
+
+headers
+    user-agent          //傳遞來的使用者是誰 可以看到瀏覽器名稱
+    content-type        //body類型 application/json
+
+//快捷鍵功能
+    輸入b4開頭 後面接 像是table 或者form

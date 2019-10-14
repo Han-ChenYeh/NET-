@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--bootstrap和jquery-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!--初始化 和自訂css-->
+    <link rel="stylesheet" href="css/style_pc.css">
+    <!-- https://datatables.net/ 表格功能-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+    <!--主選單-->
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <a class="navbar-brand" href="#">個人通訊錄</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+                <li class="nav-item">
+                    <button id="showWindowNew" class="btn btn-outline-secondary" type="button">新增</button>
+                </li>
+                <li class="nav-item">
+                    <button id="showWindowIn" class="btn btn-outline-secondary" type="button">匯入</button>
+                </li>
+                <li class="nav-item">
+                    <button id="showWindowOut" class="btn btn-outline-secondary" type="button">匯出</button>
+                </li>
+                <li class="nav-item">
+                    <button id="showWindowClear" class="btn btn-outline-secondary" type="button">清除</button>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <!--主要顯示區-->
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <table class="display" id="table1">
+                    <thead>
+                        <tr>
+                            <th>姓名</th>
+                            <th>電話</th>
+                            <th>生日</th>
+                            <th>email</th>
+                            <th>地址</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!--彈出匯出匯入小視窗-->
+    <div class="modal fade" id="outWindow">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">資料匯出</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <textarea name="fieldOutJson" id="fieldOutJson" cols="55" rows="10"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button id="ButtonOut" type="button" class="btn btn-primary">匯出匯入</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" >關閉</button>       
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+    <!--彈出新增頁面小視窗-->
+    <div class="modal fade" id="newWindow">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">資料新增</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                    <div class="form-group">
+                        <label for="fidleName" class="col-form-label">姓名</label>
+                        <input id="fidleName" type="text" class="form-control" >
+                    </div>
+                    <div class="form-group">
+                        <label for="fidlePhone" class="col-form-label">電話</label>
+                        <input id="fidlePhone" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="fidleBirthday" class="col-form-label">生日</label>
+                        <input id="fidleBirthday" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="fidleEmail" class="col-form-label">email</label>
+                        <input id="fidleEmail" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="fidleAddress" class="col-form-label">地址</label>
+                        <input id="fidleAddress" type="text" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <!-- 這裡竟然不能用在 subimt-->
+                        <button type="button" class="btn btn-danger float-right" data-dismiss="modal" >關閉</button>
+                        <button id="ButtonNew" type="button" class="btn btn-primary float-right">新增</button>
+                        <button id="ButtonUpdata" type="button" class="btn btn-primary float-right">修改</button>
+                        <button id="ButtonDelete" type="button" class="btn btn-warning float-right">刪除</button>
+                    </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        //預設資料
+        // var dat = [
+        //     ['Eric', '0912345678', '1980/1/1', 'eric@gmail.com', '台北市光復南路179號13樓'],
+        // ];
+        var dat = JSON.parse(localStorage.getItem('allData'));
+        
+        var table1;//整張表格
+        var CurrentEditItem;//選取到的資料陣列
+        $(document).ready(function (){
+            //回傳dataTable實體 是這個套件
+            table1=$("#table1").DataTable(
+                {data:dat}
+            );
+            //彈出視窗
+            $("#showWindowNew").click(showWindowNew);//新增
+            $("#showWindowIn").click(showWindowIn);//匯入
+            $("#showWindowOut").click(showWindowOut);//匯出
+            $("#showWindowClear").click(showWindowClear);//清除
+            //資料處理
+            $("#ButtonNew").click(ButtonNew);//新增
+            $("#ButtonOut").click(ButtonOut);//匯入
+            $("#ButtonUpdata").click(ButtonUpdata);//修改
+            $("#ButtonDelete").click(ButtonDelete);//刪除
+            //參考: https://datatables.net/examples/advanced_init/events_live.html
+            $('#table1 tbody').on('click', 'tr', getClickData);
+        });
+
+        
+        //資料處理 修改
+        function ButtonUpdata(){
+            var updataTarget = [
+                $("#fidleName").val(),
+                $("#fidlePhone").val(),
+                $("#fidleBirthday").val(),
+                $("#fidleEmail").val(),
+                $("#fidleAddress").val(),
+            ];
+            var n =dat.indexOf(CurrentEditItem);//取得選到目標的項目
+            dat[n]=updataTarget;
+            refreshData();
+        }
+        
+        //資料處理 刪除
+        function ButtonDelete(){
+            var n =dat.indexOf(CurrentEditItem);//取得選到目標的項目
+            dat.splice(n,1);//第3個參數沒有寫 就是刪除
+            refreshData();
+        }
+        
+        //資料處理 新增
+        function ButtonNew(){
+            let arr =[
+                $("#fidleName").val(),
+                $("#fidlePhone").val(),
+                $("#fidleBirthday").val(),
+                $("#fidleEmail").val(),
+                $("#fidleAddress").val(),
+            ]
+            $("#fidleName").val('');
+            $("#fidlePhone").val('');
+            $("#fidleBirthday").val('');
+            $("#fidleEmail").val('');
+            $("#fidleAddress").val('');
+
+            dat.push(arr);//將陣列放到陣列中
+            refreshData();//將資料重新放入且重整 寫入資料庫
+
+        }
+
+        //資料處理 匯入JSON資料
+        function ButtonOut(){
+            dat =JSON.parse($("#fieldOutJson").val());
+            refreshData();
+        }
+
+        //將資料重新放入且重整 寫入資料庫
+        function refreshData(){
+            table1.clear();
+            table1.rows.add(dat);
+            table1.draw();
+            localStorage.setItem("allData",JSON.stringify(dat));//寫入資料庫
+        }
+
+        //彈出 修改資料小視窗 並且把資料帶到畫面上
+        function getClickData(){
+            //取得當前點選的資料
+            CurrentEditItem = table1.row(this).data();
+            //顯示當前點選的資料
+            //alert(CurrentEditItem);
+            $("#fidleName").val(CurrentEditItem[0]);
+            $("#fidlePhone").val(CurrentEditItem[1]);
+            $("#fidleBirthday").val(CurrentEditItem[2]);
+            $("#fidleEmail").val(CurrentEditItem[3]);
+            $("#fidleAddress").val(CurrentEditItem[4]);
+
+            
+            $("#newWindow").modal();//這裡與新增資料的視窗使用的是同一個
+            $("#ButtonNew").attr("disabled","true");//差別在於把 關閉新增紐 打開修改紐
+            $("#ButtonUpdata").removeAttr("disabled");
+            $("#ButtonDelete").removeAttr("disabled");
+        }
+
+        //彈出 新增通訊資料視窗
+        function showWindowNew(){
+            $("#newWindow").modal();
+            $("#ButtonUpdata").attr("disabled","true");
+            $("#ButtonDelete").attr("disabled","true");
+            $("#ButtonNew").removeAttr("disabled");
+        }
+        
+        //彈出 匯出資料視窗 同時把json資料顯示在上面
+        function showWindowOut(){
+            $("#fieldOutJson").val(JSON.stringify(dat));
+            $("#fieldOutJson").attr("readonly","readonly");
+            $("#ButtonOut").attr("disabled","true");
+            $("#outWindow").modal();
+        }
+        
+        //彈出 匯入資料視窗
+        function showWindowIn(){
+            $("#fieldOutJson").val('');
+            $("#fieldOutJson").attr("readonly",false);
+            $("#ButtonOut").removeAttr("disabled");
+            $("#outWindow").modal();
+        }
+        
+        //彈出 全部刪除
+        function showWindowClear(){
+            localStorage.clear();
+            dat=[];
+            refreshData();
+        }
+        
+    </script>
+</body>
+</html>
