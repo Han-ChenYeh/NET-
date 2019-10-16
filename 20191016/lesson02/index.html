@@ -46,8 +46,8 @@
 			
 		})
 		function keyEnter(event){
-			event.preventDefault();//阻止submit
-			if (event.keyCode == 13){	
+			if (event.keyCode == 13){//如果按下的是enter
+				event.preventDefault();//按鈕無效
 				addText();
 			}
 		}
@@ -61,7 +61,12 @@
 			//去線上去取得機器人的回答
 			eRobot(inputText,function(ret){
 				answerText=ret.answers[0].answer;//得到答案
-				$("#TalkContainer").append("<span>客服: "+answerText+"</span><br><br>");//答案放到畫面上
+				if(answerText=="No good match found in KB."){
+					$("#TalkContainer").append("<span>客服: 尚未發現任何答案</span><br><br>");//答案放到畫面上
+				}else{
+					$("#TalkContainer").append("<span>客服: "+answerText+"</span><br><br>");//答案放到畫面上
+				}
+				
 				$('#TalkContainer').scrollTop($('#TalkContainer')[0].scrollHeight);//卷軸到最下面 所以每次獲得答案 就捲到最下面
 				$("#inputText").val('');//清除輸入框
 			});
