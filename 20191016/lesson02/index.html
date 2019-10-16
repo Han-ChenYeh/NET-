@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--bootstrap和jquery-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!--初始化 和自訂css-->
+	<link rel="stylesheet" href="css/style_pc.css">
+	<style>
+	
+	</style>
+</head>
+<body>
+<div class="container">
+	<div class="row justify-content-md-center">
+		<div class="col-lg-6">
+
+			<div class="card">
+				<div class="card-header">
+					對談機器人
+				</div>
+				<div class="card-body">
+					<!-- 對談區 -->
+                    <div id="TalkContainer" style="overflow: auto; height: 300px;">
+					</div>
+				</div>
+			</div>
+			<form class="form-inline">
+				<input id="inputText" class="form-control" style="width:88%">
+				<button type="button" id="ButtonSend" class="btn btn-primary">送出</button>
+			</form>
+		</div>
+	</div>
+</div>
+	<script>
+		var answerText;
+		$(document).ready(function () {
+			$("#ButtonSend").click(addText);
+			$("#inputText").keypress(keyEnter);//按鈕動作
+			
+		})
+		function keyEnter(event){
+			event.preventDefault();//阻止submit
+			if (event.keyCode == 13){	
+				addText();
+			}
+		}
+
+		//發出問題
+		function addText(){
+			
+			var inputText = $("#inputText").val();//輸入的文字
+			$("#TalkContainer").append("<span>用戶: "+inputText+"</span><br>");
+
+			//去線上去取得機器人的回答
+			eRobot(inputText,function(ret){
+				answerText=ret.answers[0].answer;//得到答案
+				$("#TalkContainer").append("<span>客服: "+answerText+"</span><br><br>");//答案放到畫面上
+				$('#TalkContainer').scrollTop($('#TalkContainer')[0].scrollHeight);//卷軸到最下面 所以每次獲得答案 就捲到最下面
+				$("#inputText").val('');//清除輸入框
+			});
+		}
+
+		//去線上去取得機器人的回答 可以把參數和方法傳送進來 讓呼叫的人決定問題和答案要如何處理
+		function eRobot(msg,whenSuccess){
+			$.ajax(
+				{
+					type:"post",
+					headers:{
+						"Authorization": "EndpointKey 043b8179-f82b-46df-954b-8b354f1d80cf",
+                		"Content-Type": "application/json"
+					},
+					url: "https://qnarobot.azurewebsites.net/qnamaker/knowledgebases/4aff0876-ff52-4ee5-9b25-f69a52b48307/generateAnswer",
+					data: JSON.stringify({ "question": msg }),
+					dataType: "json",
+					success: whenSuccess,//方法從外部傳入
+					error: whenSuccess
+				}
+			);
+		}
+	</script>
+</body>
+</html>

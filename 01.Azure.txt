@@ -28,3 +28,45 @@ Azure 可以用來建立Web應用程式
 取得網址
 	01. 選擇概觀 裡面有url 是github起點
 	
+建立機器人
+	00.	打開Qna Maker網站 和 Microsoft Azure網站 連接帳號
+	01.	進入Microsoft Azure > 首頁>新增>查詢Qna Maker
+	02.	要付費 所以建立新的資源群組 刪除時 必須刪除整個資源群組!!!!!!!!!!!!!
+	03.	付費方式 F最便宜 indexes數量越大 速度越快
+	04.	app service方案 最低只能選s1 所以必須要付費
+	05.	應用程式見解位置 設定停用
+
+	01. 打開Qna Maker網站(知識庫) 上方點選 create a knowledge base
+	02.	步驟1 建立Qna Maker的金鑰
+	03.	步驟2 將Qna服務連結到知識庫
+	04.	步驟3 命名知識庫
+	05.	步驟4 如果有預設的知識庫 可以從此添加 文件是
+		Question  	Answer
+		早安		你也早
+		吃飽沒		準備要去吃飯了
+
+		也能加入網址
+		https://li.oit.edu.tw/files/14-1006-8074,r452-1.php?Lang=zh-tw
+	
+	06.	確認知識庫無誤後 上方點選publish 可生成金鑰
+		POST /knowledgebases/4aff0876-ff52-4ee5-9b25-f69a52b48307/generateAnswer
+		Host: https://qnarobot.azurewebsites.net/qnamaker
+		Authorization: EndpointKey 043b8179-f82b-46df-954b-8b354f1d80cf
+		Content-Type: application/json
+		{"question":"<Your question>"}
+
+		$.ajax({
+			type: "post",
+			headers: {
+				"Authorization": "EndpointKey 換成你的key",
+				"Content-Type": "application/json"
+			},
+			url: "換成你的endpoint URL",
+			data: JSON.stringify({ "question": 換成你的問題 }),
+			dataType: "json",
+			success: function (ret) {
+				//如果成功
+			}, error: function (err) {
+				//如果有錯
+			}
+		});
