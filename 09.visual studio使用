@@ -1,3 +1,18 @@
 打開visual studio install
     01. 程式碼工具的個別工具中 安裝 LINQ to SQL工具
     02. github extension for visual studio
+
+開啟專案
+    01. C#
+    02. ASPNET Web Application(.NET Framework) ASP.NET Web 應用程式 C#
+    03. framework選4.7.2 
+    04. Empty 右邊 三個都勾選 web forms mvc web api
+    05. 在Controllers資料夾 右鍵 加入 控制器 選擇Web api controller
+    06. 取名時 必須是某某某 Controller 例如ContactController
+    07. 使用時 
+        前半段
+        專案右鍵 屬性 > Web 可以看到 專案URL  http://localhost:6984/
+        後半段
+        可以去查詢網址格式 在 App_Start資料夾的 WebApiConfig.cs
+        網址輸入 網址/api/contact
+    08. 
