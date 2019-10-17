@@ -28,7 +28,10 @@ Azure 可以用來建立Web應用程式
 取得網址
 	01. 選擇概觀 裡面有url 是github起點
 	
-建立機器人
+Azure建立翻譯功能
+	新增資源時 搜尋Translator Text
+
+Azure建立機器人
 	00.	打開Qna Maker網站 和 Microsoft Azure網站 連接帳號
 	01.	進入Microsoft Azure > 首頁>新增>查詢Qna Maker
 	02.	要付費 所以建立新的資源群組 刪除時 必須刪除整個資源群組!!!!!!!!!!!!!
