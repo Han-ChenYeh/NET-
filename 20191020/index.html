@@ -57,7 +57,8 @@
                     icon: 'picture/bike_blue.png'
                 }
             };
-            //此方法會回傳
+            
+            //取得官方資料後 進行分析後 重新組成一個陣列 並回傳
             var features = getUbikeLocation();
 
             //主要的方法 
@@ -89,7 +90,7 @@
             return ubikelocation;
         }
 
-        //取得官方資料後 進行分析後 重新組成一個陣列 
+        //取得官方資料後 進行分析後 重新組成一個陣列 並回傳
         function getUbikeLocation(){
         /*
             [
