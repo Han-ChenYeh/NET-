@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <!--bootstrap和jquery-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
     <!--日期元件使用-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <!--初始化 和自訂css-->
     <link rel="stylesheet" href="css/style_pc.css">
 </head>
+
 <body>
-    
+
     <input type="date" id="mybirthday" name="mybirthday">
     <p></p>
     <script>
@@ -26,44 +33,90 @@
             $("#mybirthday").change(connectGetNum);
         });
 
-        //計算星座
-        function editStar(){
+        /*
+        function getxingzuo(month, day) {
+            var d = new Date(1999, month - 1, day, 0, 0, 0);
+            var arr = [];
+            arr.push(["魔羯座", new Date(1999, 0, 1, 0, 0, 0)])
+            arr.push(["水瓶座", new Date(1999, 0, 20, 0, 0, 0)])
+            arr.push(["雙魚座", new Date(1999, 1, 19, 0, 0, 0)])
+            arr.push(["牡羊座", new Date(1999, 2, 21, 0, 0, 0)])
+            arr.push(["金牛座", new Date(1999, 3, 21, 0, 0, 0)])
+            arr.push(["雙子座", new Date(1999, 4, 21, 0, 0, 0)])
+            arr.push(["巨蟹座", new Date(1999, 5, 22, 0, 0, 0)])
+            arr.push(["獅子座", new Date(1999, 6, 23, 0, 0, 0)])
+            arr.push(["處女座", new Date(1999, 7, 23, 0, 0, 0)])
+            arr.push(["天秤座", new Date(1999, 8, 23, 0, 0, 0)])
+            arr.push(["天蠍座", new Date(1999, 9, 23, 0, 0, 0)])
+            arr.push(["射手座", new Date(1999, 10, 22, 0, 0, 0)])
+            arr.push(["魔羯座", new Date(1999, 11, 22, 0, 0, 0)])
+            for (var i = arr.length - 1; i >= 0; i--) {
+                if (d >= arr[i][1]) return arr[i][0];
+            }
+        }
+        */
+        
+        //計算取得星座
+        function getxingzuo(month, day) {
 
+            var d = new Date(1999, month - 1, day, 0, 0, 0);
+            var arr = [];
+            arr.push(["capricorn", new Date(1999, 0, 1, 0, 0, 0)]) //魔羯座 Capricorn
+            arr.push(["aquarius", new Date(1999, 0, 20, 0, 0, 0)]) //水瓶座 Aquarius
+            arr.push(["pisces", new Date(1999, 1, 19, 0, 0, 0)]) //雙魚座 Pisces
+            arr.push(["aries", new Date(1999, 2, 21, 0, 0, 0)]) //牡羊座 Aries
+            arr.push(["taurus", new Date(1999, 3, 21, 0, 0, 0)]) //金牛座 Taurus
+            arr.push(["gemini", new Date(1999, 4, 21, 0, 0, 0)]) //雙子座 Gemini
+            arr.push(["cancer", new Date(1999, 5, 22, 0, 0, 0)]) //巨蟹座 Cancer
+            arr.push(["leo", new Date(1999, 6, 23, 0, 0, 0)]) //獅子座 Leo
+            arr.push(["virgo", new Date(1999, 7, 23, 0, 0, 0)]) //處女座 Virgo
+            arr.push(["libra", new Date(1999, 8, 23, 0, 0, 0)]) //天秤座 Libra
+            arr.push(["scorpio", new Date(1999, 9, 23, 0, 0, 0)]) //天蠍座 Scorpio
+            arr.push(["sagittarius", new Date(1999, 10, 22, 0, 0, 0)]) //射手座 Sagittarius
+            arr.push(["capricorn", new Date(1999, 11, 22, 0, 0, 0)]) //魔羯座 Capricorn
+            for (var i = arr.length - 1; i >= 0; i--) {
+                if (d >= arr[i][1]) return arr[i][0];
+            }
         }
 
         //計算生命靈數
-        function editNum(){
-            let birthday =$("#mybirthday").val();
-            birthday=birthday.replace("-","").replace("-","");
+        function editNum() {
+            let birthday = $("#mybirthday").val();
+            birthday = birthday.replace("-", "").replace("-", "");
 
-            let editNum=0;
-            while(birthday.length>1){
+            let editNum = 0;
+            while (birthday.length > 1) {
                 let DayArray = birthday.split('');
-                $.each(DayArray,function(i,item){
-                    editNum+=parseInt(item);
+                $.each(DayArray, function (i, item) {
+                    editNum += parseInt(item);
                 });
-                birthday=editNum.toString();
-                editNum=0;
+                birthday = editNum.toString();
+                editNum = 0;
             }
-            console.log("生命靈數為",birthday);
+            console.log("生命靈數為", birthday);
             return birthday;
         }
-        
+
         //使用生命靈數取得答案
-        function numGetAnswer(response){
-            let num =editNum()-1;//用於陣列要少一
-            console.log("答案是: ",JSON.parse(response).lookup[num]);
+        function numGetAnswer(response) {
+            let num = editNum() - 1; //用於陣列要少一
+
+            $("p").text("星座是: "+JSON.parse(response).name+","+"答案是: "+JSON.parse(response).lookup[num]);
         }
 
         //get的傳遞方式
-        function connectGetNum(){
+        function connectGetNum() {
+            let birthday = $("#mybirthday").val().split('-');
+            let month = birthday[1];
+            let day = birthday[2];
+            let myStar =getxingzuo(month,day);//取得星座
             $.ajax({
-                type:"get",
-                url:"https://buildschoolnumerology.azurewebsites.net/api/Number/Numerology",
-                data:{
-                    constellation:"aquarius"
+                type: "get",
+                url: "https://buildschoolnumerology.azurewebsites.net/api/Number/Numerology",
+                data: {
+                    constellation: myStar
                 },
-                success:numGetAnswer
+                success: numGetAnswer
             });
         }
     </script>
