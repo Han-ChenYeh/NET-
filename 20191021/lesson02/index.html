@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--bootstrap和jquery-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <!--日期元件使用-->
+    <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+    <!--初始化 和自訂css-->
+    <link rel="stylesheet" href="css/style_pc.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>行事曆</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">日</div>
+            <div class="col">一</div>
+            <div class="col">二</div>
+            <div class="col">三</div>
+            <div class="col">四</div>
+            <div class="col">五</div>
+            <div class="col">六</div>
+        </div>
+        <div class="row">
+            
+        </div>
+    </div>
+    <script>
+        var arr=[];
+        var dateTime;
+        var enddddd;//每月最後一天
+        var startdddd;//每月第一天
+        $(document).ready(function () {
+            moment().locale("zh-tw");
+            dateTime =moment().format('dddd');
+            console.log("今天",dateTime);
+            startdddd=moment().startOf('month');
+            enddddd=moment().endOf('month');
+            createDate();
+        });
+
+        function createDate(){
+            var size = parseInt(enddddd.format('DD'));
+            for(let i=1;i<=size;i++){
+                console.log("",i);
+            }
+        }
+    </script>
+</body>
+</html>

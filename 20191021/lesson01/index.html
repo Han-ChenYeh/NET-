@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--bootstrap和jquery-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <!--初始化 和自訂css-->
+    <link rel="stylesheet" href="css/style_pc.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="puzzle" id="puzzle">
+
+            </div>
+        </div>
+    </div>
+    <script>
+        class puzzleBox {
+            //初始化
+            constructor() {
+                this.data = ['1','2','3','4','5','6','7','8','9'];
+                this.index = 8;
+            }
+            setPoint(dataInput,index) { //設定位置
+                this.data = dataInput;
+                this.index = index;
+            }
+        }
+
+        $(document).ready(function () {
+            randomPuzzle();
+            $("#puzzle div").click(touchPuzzle);
+        });
+
+
+        //點擊拼圖
+        function touchPuzzle() {
+            let touchNum = $(this).text(); //數字 this不能用字串
+            let touchIndex = game.data.indexOf(touchNum);//找到位置在哪裡
+            console.log("數字是",touchNum);
+            console.log("位置是",touchIndex);
+            touchPuzzleShow(touchIndex,touchNum);
+
+            game.index=touchIndex;
+            //touchPuzzleShow(touchIndex,touchNum);
+        }
+        
+        function touchPuzzleShow(touchIndex,touchNum){
+            // game.data.splice(touchIndex,1,game.data[game.index]);
+            // game.data.splice(game.index,1,touchNum);//(放置位置,刪除幾個,內容)
+            let x ;
+            x=game.data[touchIndex];
+            game.data[touchIndex]=game.data[game.index];
+            game.data[game.index]=x;
+            $.each(game.data,function(i,item){
+                if(i==game.index){
+                    $("#item"+item).text('');
+                }else{
+                    $("#item"+item).text(item);
+                }
+            });
+            console.log("陣列是",game.data);
+        }
+
+        var game = new puzzleBox();
+
+        //生成隨機陣列
+        function randomPuzzle() {
+            let url = game.data[Math.floor(Math.random() * game.data.length)]; //生成隨機數字用於參數
+            if(url<=2){
+                game.setPoint(['1','6','8','4','9','5','3','2','7'],8);
+            }else if(url<=5){
+                game.setPoint(['7','6','9','2','8','4','3','1','2'],8);
+            }else{
+                game.setPoint(['8','2','5','7','3','6','4','9','1'],8);
+            }
+            randomPuzzleShow();
+        }
+
+        function randomPuzzleShow(){
+            $.each(game.data,function(i,item){
+                if(i==game.index){
+                    $("#puzzle").append("<div id='item" + item + "'>" + "</div>");
+                }else{
+                    $("#puzzle").append("<div id='item" + item + "'>" + item + "</div>");
+                }
+                
+
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+@import "_baseline";
+@import "_normalize";
+
+.puzzle{
+    display: flex;
+    flex-direction : row;
+    flex-wrap:wrap;
+    height: 600px;
+    width:600px;
+    div{
+        flex-basis:180px;
+        flex-grow:1;
+        font-size: 3em;
+        text-align: center;
+    }
+}
